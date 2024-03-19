@@ -1,7 +1,11 @@
 Parser written in Python to generate pdf with monster from TomeNET.
-Compilation is done with LaTeX.
+Compilation is done with luaLaTeX.
 
 Using latexmk for compilation.
+
+```bash
+latexmk -lualatex <file>
+```
 
 Monsters don't share pages with each other
 
