@@ -1,0 +1,94 @@
+\documentclass[12pt,english]{article}
+\usepackage[a4paper]{geometry}
+\usepackage[contents={}, opacity=.85,scale=1,]{background}
+\usepackage{babel}
+\usepackage{fontspec}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{lettrine}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{libertine}
+\usepackage[iso]{isodate}
+
+%\setmainfont{Linux Libertine O}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+\input EileenBl.fd
+
+\usepackage[unicode=true,
+    bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+    breaklinks=true,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false]
+{hyperref}
+
+\setcounter{DefaultLines}{4}
+\renewcommand*{\DefaultLraise}{.1}
+
+\captionsetup{textfont=bf,font=large,singlelinecheck=off,justification=raggedright}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,a4paper}
+\setlength{\parindent}{0pt} \titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+
+\makeatletter
+%\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+%\newcommand{\prefix@subsection}{\thesubsection}
+\makeatother
+
+\newcommand*\initfamily{\usefont{U}{EileenBl}{xl}{n}}
+\renewcommand{\LettrineFontHook}{\initfamily}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+
+\newcommand\equalitytest[1]
+{%
+    \ifdim\LettrineHeight>#1
+        \vspace{\LettrineHeight}
+        \vspace{-#1}
+    \fi%
+}
+\newlength{\heightofhw}
+
+\begin{document}
+\pagenumbering{roman}
+
+\begin{center}
+    This document was compiled on \today.
+\end{center}
+
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\section{Animals}
+\subfile{ANIMAL.tex}
+\section{Demons}
+\subfile{DEMON.tex}
+\section{Dragons}
+\subfile{DRAGON.tex}
+\section{Dragonriders}
+\subfile{DRAGONRIDER.tex}
+\section{Evils}
+\subfile{EVIL.tex}
+\section{Giants}
+\subfile{GIANT.tex}
+\section{Goods}
+\subfile{GOOD.tex}
+\section{Nonlivings}
+\subfile{NONLIVING.tex}
+\section{Orcs}
+\subfile{ORC.tex}
+\section{Pseudos}
+\subfile{PSEUDOUNIQUE.tex}
+\section{Spiders}
+\subfile{SPIDER.tex}
+\section{Trolls}
+\subfile{TROLL.tex}
+\section{Undeads}
+\subfile{UNDEAD.tex}
+\section{Uniques}
+\subfile{UNIQUE.tex}
+\section{Rest}
+\subfile{REST.tex}
+\end{document}

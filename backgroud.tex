@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+\usepackage[contents={}, opacity=.85,scale=1,]{background}
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{lettrine}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{libertine}
+
+%\setmainfont{Linux Libertine O}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+\input EileenBl.fd
+
+\usepackage[unicode=true,
+    bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+    breaklinks=true,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false]
+{hyperref}
+
+\setcounter{DefaultLines}{4}
+\renewcommand*{\DefaultLraise}{.1}
+
+\captionsetup{textfont=bf,font=large,singlelinecheck=off,justification=raggedright}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,a4paper}
+\setlength{\parindent}{0pt} \titleformat*{\section}{\LARGE\bfseries}
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+\makeatother
+
+\newcommand*\initfamily{\usefont{U}{EileenBl}{xl}{n}}
+\renewcommand{\LettrineFontHook}{\initfamily}
+\renewcommand{\thesection}{}
+
+\AddEverypageHook{%
+    \ifthenelse{\isodd{\value{page}}}%
+    {\backgroundsetup{
+            angle=0,
+            contents={%
+                    \includegraphics[width=\paperwidth,height=\paperheight]{tryimage.jpg}
+                }%
+        }%
+    }%
+    {\backgroundsetup{
+            angle=180,
+            contents={%
+                    \tikz[baseline=(a.north)]\node[yscale=-1,inner sep=0,outer
+                        sep=0](a){\includegraphics[width=\paperwidth,height=\paperheight]{tryimage.jpg}};
+                }%
+        }%
+    }%
+    \BgMaterial}
+
+\newcommand\equalitytest[1]
+{%
+    \ifdim\LettrineHeight>#1
+        \vspace{\LettrineHeight}
+        \vspace{-#1}
+    \fi%
+}
+\newlength{\heightofhw}
+
+\begin{document}
+\pagenumbering{roman}
+
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\subfile{MONSTER.tex}
+\end{document}
